@@ -1,5 +1,7 @@
 #include <sstream>
 #include "UnrolledLinkedList.h"
+#define TEST_MODULE
+#include <iostream>
 
 namespace datastructures
 {
@@ -49,7 +51,9 @@ private:
 
 const int UnrolledLinkedList::Impl::NODE_CAPACITY = 4;
 
-// Node Constructors/Destructors Definitions
+// Definitions
+
+// Node Constructors/Destructors
 UnrolledLinkedList::Impl::Node::Node()
 {
     numElements = 0;
@@ -63,7 +67,7 @@ UnrolledLinkedList::Impl::Node::~Node()
     delete[] arr;
 }
 
-// Implementation Method Definitions
+// Implementation Methods
 UnrolledLinkedList::Impl::Impl()
 {
     head = nullptr;
@@ -162,27 +166,30 @@ int UnrolledLinkedList::Impl::find(int value) const
 
     while (curr)
     {
+        // Look for value in current(curr) node
         for (int i = 0; i < curr->numElements; ++i)
         {
             if (curr->arr[i] == value)
                 return pos; // found
             ++pos;
         }
+        // If not found, move to next node
         curr = curr->next;
     }
 
-    return -1; // not found
+    return -1; // Not found
 }
 
 void UnrolledLinkedList::Impl::clear()
 {
     Node* curr = head;
 
+    // Go through each node and delete it
     while (curr)
     {
         Node* tmp = curr;
         curr = curr->next;
-        delete tmp;
+        delete tmp; // Node destructor gets called
     }
 
     head = nullptr;
@@ -269,6 +276,15 @@ std::string UnrolledLinkedList::Impl::toString() const
 }
 
 // UnrolledLinkedList Method Definitions
+
+UnrolledLinkedList::UnrolledLinkedList()
+{
+    pImpl = new Impl();
+}
+UnrolledLinkedList::~UnrolledLinkedList()
+{
+    delete pImpl;
+}
 UnrolledLinkedList& UnrolledLinkedList::operator+=(const int value)
 {
     pImpl->insert(value);
@@ -328,6 +344,42 @@ std::string UnrolledLinkedList::toString() const
     return pImpl->toString();
 }
 }
+
+#ifdef RUN_DEBUG
+#ifdef TEST_MODULE
+#include <iostream>
+int main()
+{
+    // Insertion tests
+    std::cout << "Insertion tests" << std::endl;
+    datastructures::UnrolledLinkedList list1;
+    list1 += 1;
+    std::cout << list1.toString() << std::endl;
+    list1 += 1;
+    std::cout << list1.toString() << std::endl;
+    list1 += 2;
+    std::cout << list1.toString() << std::endl;
+    list1 += 3;
+    std::cout << list1.toString() << std::endl;
+    list1 += 4;
+    std::cout << list1.toString() << std::endl;
+    list1 += 5;
+    std::cout << list1.toString() << std::endl;
+    list1 += 5;
+    std::cout << list1.toString() << std::endl;
+
+    // Deletions Tests
+    std::cout << "Deletions Tests" << std::endl;
+    list1 -= 5;
+    std::cout << list1.toString() << std::endl;
+    list1 -= 1;
+    std::cout << list1.toString() << std::endl;
+    list1 -= 2;
+    std::cout << list1.toString() << std::endl;
+    return 0;
+}
+#endif // TEST_MODULE
+#endif // RUN_DEBUG
 
 
 

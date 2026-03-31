@@ -2,6 +2,7 @@
 #define UNROLLEDLINKEDLIST_H_769124
 
 #include <string>
+#define RUN_DEBUG
 
 namespace datastructures
 {
