@@ -1,31 +1,36 @@
 #ifndef UNROLLEDLINKEDLIST_H_769124
 #define UNROLLEDLINKEDLIST_H_769124
-template <typename T>
-class UnrolledList {
+
+#include <string>
+
+namespace datastructures
+{
+class UnrolledLinkedList
+{
 public:
     // Constructors/Destructors
-    UnrolledList();
-    ~UnrolledList();
+    UnrolledLinkedList();
+    ~UnrolledLinkedList();
 
-    // Insert/Delete
-    UnrolledList& operator+=(const T& value);
-    UnrolledList& operator-=(const T& value);
+    // Insert/Delete(first instance) by value
+    UnrolledLinkedList& operator+=(const int value);
+    UnrolledLinkedList& operator-=(const int value);
 
     // Search by Value
-    int operator[](const T& value) const;
+    int operator[](const int value) const;
 
-    //void updateAt(int index, const T& value, char op); // update (if meaningful for T)
+    // Edit *= implementation
 
     // Clear Object
     void operator!();
 
     // Lexicographical Comparisons of Objects
-    bool operator==(const UnrolledList<T>& other) const;
-    bool operator!=(const UnrolledList<T>& other) const;
-    bool operator< (const UnrolledList<T>& other) const;
-    bool operator<=(const UnrolledList<T>& other) const;
-    bool operator> (const UnrolledList<T>& other) const;
-    bool operator>=(const UnrolledList<T>& other) const;
+    bool operator==(const UnrolledLinkedList& other) const;
+    bool operator!=(const UnrolledLinkedList& other) const;
+    bool operator< (const UnrolledLinkedList& other) const;
+    bool operator<=(const UnrolledLinkedList& other) const;
+    bool operator> (const UnrolledLinkedList& other) const;
+    bool operator>=(const UnrolledLinkedList& other) const;
 
     std::string toString() const;
 
@@ -33,6 +38,9 @@ private:
     class Impl;
     Impl* pImpl;
 };
+}
+
+
 #endif // UNROLLEDLINKEDLIST_H_769124
 
 
