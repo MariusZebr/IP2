@@ -1,3 +1,5 @@
+#ifndef UNROLLEDLINKEDLIST_H_769124
+#define UNROLLEDLINKEDLIST_H_769124
 template <typename T>
 class UnrolledList {
 public:
@@ -31,3 +33,6 @@ private:
     class Impl;
     Impl* pImpl;
 };
+#endif // UNROLLEDLINKEDLIST_H_769124
+
+
