@@ -54,6 +54,7 @@ UnrolledLinkedList::Impl::Node::Node()
     numElements = 0;
     next = nullptr;
     arr = new int[NODE_CAPACITY];
+    // An exception?
 }
 
 UnrolledLinkedList::Impl::Node::~Node()
@@ -119,6 +120,36 @@ void UnrolledLinkedList::Impl::insert(int value)
     }
 }
 
+void UnrolledLinkedList::Impl::remove(int value)
+{
+    Node* curr = head;
+    Node* prev = nullptr;
+
+    while (curr) {
+        // Look for value in current(curr) node
+        for (int i = 0; i < curr->numElements; ++i) {
+            if (curr->arr[i] == value) {
+                // Shift array elements left
+                for (int j = i; j < curr->numElements - 1; ++j) {
+                    curr->arr[j] = curr->arr[j + 1];
+                }
+                curr->numElements--;
+
+                // Remove node if empty but not head
+                if (curr->numElements == 0 && prev) {
+                    prev->next = curr->next;
+                    delete curr;
+                }
+
+                return; // removed first occurrence
+            }
+        }
+
+        // Move to next node
+        prev = curr;
+        curr = curr->next;
+    }
+}
 
 }
 
