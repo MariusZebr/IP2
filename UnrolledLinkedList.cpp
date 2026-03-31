@@ -37,8 +37,8 @@ public:
     void clear();
 
     // Comparison
-    bool compare(const Impl* other, int& result) const;
-    // result: -1 if this < other, 0 if equal, 1 if this > other
+    int compare(const Impl* other) const;
+    // return: -1 if this < other, 0 if equal, 1 if this > other
 
     // convert list to string
     std::string toString() const;
@@ -188,6 +188,67 @@ void UnrolledLinkedList::Impl::clear()
     head = nullptr;
 }
 
+int UnrolledLinkedList::Impl::compare(const Impl* other) const
+{
+    if (!other)
+    {
+        // An exception
+    }
+    Node* a = head;
+    Node* b = other->head;
+
+    int i = 0, j = 0;
+
+    while (a && b)
+    {
+        // Compare elements inside one of nodes
+        while (i < a->numElements && j < b->numElements)
+        {
+            if (a->arr[i] < b->arr[j])
+            {
+                return -1;
+            }
+            if (a->arr[i] > b->arr[j])
+            {
+                return 1;
+            }
+            ++i;
+            ++j;
+        }
+
+        // Move to next node in a
+        if (i >= a->numElements)
+        {
+            a = a->next;
+            i = 0;
+        }
+
+        // Move to next node in b
+        if (j >= b->numElements)
+        {
+            b = b->next;
+            j = 0;
+        }
+    }
+
+    // If one list ended, compare lengths
+    int result;
+    if (!a && !b)
+    {
+        result = 0; // equal
+    }
+    else if (!a)
+    {
+        result = -1; // a shorter
+    }
+    else
+    {
+        result = 1; // b shorter
+    }
+
+    return result;
+}
+
 std::string UnrolledLinkedList::Impl::toString() const
 {
     Node* curr = head;
@@ -230,6 +291,45 @@ void UnrolledLinkedList::operator!()
     pImpl->clear();
 }
 
+bool UnrolledLinkedList::operator==(const UnrolledLinkedList& other) const
+{
+    return (pImpl->compare(other.pImpl) == 0);
 }
+
+bool UnrolledLinkedList::operator!=(const UnrolledLinkedList& other) const
+{
+    return (pImpl->compare(other.pImpl) != 0);
+}
+
+bool UnrolledLinkedList::operator<(const UnrolledLinkedList& other) const
+{
+    return (pImpl->compare(other.pImpl) == -1);
+}
+
+bool UnrolledLinkedList::operator<=(const UnrolledLinkedList& other) const
+{
+    int result = pImpl->compare(other.pImpl);
+    return (result == -1) || (result == 0);
+}
+
+bool UnrolledLinkedList::operator>(const UnrolledLinkedList& other) const
+{
+    return (pImpl->compare(other.pImpl) == 1);
+}
+
+bool UnrolledLinkedList::operator>=(const UnrolledLinkedList& other) const
+{
+    int result = pImpl->compare(other.pImpl);
+    return (result == 1) || (result == 0);
+}
+
+std::string UnrolledLinkedList::toString() const
+{
+    return pImpl->toString();
+}
+}
+
+
+
 
 
