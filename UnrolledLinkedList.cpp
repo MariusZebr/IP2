@@ -70,19 +70,14 @@ UnrolledLinkedList::Impl::Impl()
 
 UnrolledLinkedList::Impl::~Impl()
 {
-    Node* curr = head;
-    while (curr)
-    {
-        Node* tmp = curr;
-        curr = curr->next;
-        delete tmp; // Node destructor frees array
-    }
+    clear();
 }
 
 void UnrolledLinkedList::Impl::insert(int value)
 {
     // Case 1: if empty list, create first Node with the value
-    if (!head) {
+    if (!head)
+    {
         head = new Node();
         head->arr[0] = value;
         head->numElements = 1;
@@ -95,17 +90,20 @@ void UnrolledLinkedList::Impl::insert(int value)
         curr = curr->next;
 
     // Case 2: if last node has space, insert value
-    if (curr->numElements < NODE_CAPACITY) {
+    if (curr->numElements < NODE_CAPACITY)
+    {
         curr->arr[curr->numElements++] = value;
     }
-    else {
+    else
+    {
         // Case 3: if Node full, split and carry one half to new node
         Node* newNode = new Node();
 
         int moveCount = NODE_CAPACITY / 2;
 
         // Move half of elements to new node
-        for (int i = moveCount; i < NODE_CAPACITY; ++i) {
+        for (int i = moveCount; i < NODE_CAPACITY; ++i)
+        {
             newNode->arr[newNode->numElements++] = curr->arr[i];
         }
 
@@ -125,18 +123,23 @@ void UnrolledLinkedList::Impl::remove(int value)
     Node* curr = head;
     Node* prev = nullptr;
 
-    while (curr) {
+    while (curr)
+    {
         // Look for value in current(curr) node
-        for (int i = 0; i < curr->numElements; ++i) {
-            if (curr->arr[i] == value) {
+        for (int i = 0; i < curr->numElements; ++i)
+        {
+            if (curr->arr[i] == value)
+            {
                 // Shift array elements left
-                for (int j = i; j < curr->numElements - 1; ++j) {
+                for (int j = i; j < curr->numElements - 1; ++j)
+                {
                     curr->arr[j] = curr->arr[j + 1];
                 }
                 curr->numElements--;
 
                 // Remove node if empty but not head
-                if (curr->numElements == 0 && prev) {
+                if (curr->numElements == 0 && prev)
+                {
                     prev->next = curr->next;
                     delete curr;
                 }
@@ -156,8 +159,10 @@ int UnrolledLinkedList::Impl::find(int value) const
     Node* curr = head;
     int pos = 0;
 
-    while (curr) {
-        for (int i = 0; i < curr->numElements; ++i) {
+    while (curr)
+    {
+        for (int i = 0; i < curr->numElements; ++i)
+        {
             if (curr->arr[i] == value)
                 return pos; // found
             ++pos;
@@ -166,6 +171,20 @@ int UnrolledLinkedList::Impl::find(int value) const
     }
 
     return -1; // not found
+}
+
+void UnrolledLinkedList::Impl::clear()
+{
+    Node* curr = head;
+
+    while (curr)
+    {
+        Node* tmp = curr;
+        curr = curr->next;
+        delete tmp;
+    }
+
+    head = nullptr;
 }
 
 }
