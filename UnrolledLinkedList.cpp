@@ -36,12 +36,12 @@ public:
     // remove all elements
     void clear();
 
-    // convert list to string
-    std::string toString() const;
-
     // Comparison
     bool compare(const Impl* other, int& result) const;
     // result: -1 if this < other, 0 if equal, 1 if this > other
+
+    // convert list to string
+    std::string toString() const;
 
 private:
     Node* head;      // pointer to first node
@@ -193,9 +193,11 @@ std::string UnrolledLinkedList::Impl::toString() const
     Node* curr = head;
     std::stringstream ss;
 
-    while (curr) {
+    while (curr)
+    {
         ss << curr->numElements << ": ";
-        for (int i = 0; i < curr->numElements; ++i) {
+        for (int i = 0; i < curr->numElements; ++i)
+        {
             ss << curr->arr[i] << " ";
         }
         ss << "| ";  // separator for different nodes
@@ -203,6 +205,29 @@ std::string UnrolledLinkedList::Impl::toString() const
     }
 
     return ss.str();
+}
+
+// UnrolledLinkedList Method Definitions
+UnrolledLinkedList& UnrolledLinkedList::operator+=(const int value)
+{
+    pImpl->insert(value);
+    return *this;
+}
+
+UnrolledLinkedList& UnrolledLinkedList::operator-=(const int value)
+{
+    pImpl->remove(value);
+    return *this;
+}
+
+int UnrolledLinkedList::operator[](int value) const
+{
+    return pImpl->find(value);
+}
+
+void UnrolledLinkedList::operator!()
+{
+    pImpl->clear();
 }
 
 }
