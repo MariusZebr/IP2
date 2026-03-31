@@ -151,6 +151,23 @@ void UnrolledLinkedList::Impl::remove(int value)
     }
 }
 
+int UnrolledLinkedList::Impl::find(int value) const
+{
+    Node* curr = head;
+    int pos = 0;
+
+    while (curr) {
+        for (int i = 0; i < curr->numElements; ++i) {
+            if (curr->arr[i] == value)
+                return pos; // found
+            ++pos;
+        }
+        curr = curr->next;
+    }
+
+    return -1; // not found
+}
+
 }
 
 
