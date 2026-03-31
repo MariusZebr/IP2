@@ -1,3 +1,4 @@
+#include <sstream>
 #include "UnrolledLinkedList.h"
 
 namespace datastructures
@@ -185,6 +186,23 @@ void UnrolledLinkedList::Impl::clear()
     }
 
     head = nullptr;
+}
+
+std::string UnrolledLinkedList::Impl::toString() const
+{
+    Node* curr = head;
+    std::stringstream ss;
+
+    while (curr) {
+        ss << curr->numElements << ": ";
+        for (int i = 0; i < curr->numElements; ++i) {
+            ss << curr->arr[i] << " ";
+        }
+        ss << "| ";  // separator for different nodes
+        curr = curr->next;
+    }
+
+    return ss.str();
 }
 
 }
