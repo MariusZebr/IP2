@@ -1,8 +1,21 @@
+#include <string>
 #include <sstream>
 #include <utility>
+#include <exception>
+#include <stdexcept>
 #include "UnrolledLinkedList.h"
+
 #define TEST_MODULE
-#include <iostream>
+#include <iostream> // remove later
+
+// Custom Exception
+class ValueNotFound : public std::runtime_error
+{
+public:
+    ValueNotFound(const std::string& message) : std::runtime_error(std::string(message))
+    {
+    }
+};
 
 namespace datastructures
 {
@@ -41,7 +54,7 @@ public:
     void insert(int value);
     void remove(int value);
 
-    // Return position of value, -1 if not found
+    // Return position of value, ValueNotFound exception if not found
     int find(int value) const;
 
     // Replace value at index with newValue
@@ -71,7 +84,6 @@ UnrolledLinkedList::Impl::Node::Node()
     numElements = 0;
     next = nullptr;
     arr = new int[NODE_CAPACITY];
-    // An exception?
 }
 
 UnrolledLinkedList::Impl::Node::~Node()
@@ -149,7 +161,7 @@ void UnrolledLinkedList::Impl::insert(int value)
     }
     else
     {
-        // Case 3: if Node full, split and carry one half to new node
+        // Case 3: if last Node full, split and carry one half to new node
         Node* newNode = new Node();
 
         int moveCount = NODE_CAPACITY / 2;
@@ -225,11 +237,14 @@ int UnrolledLinkedList::Impl::find(int value) const
         curr = curr->next;
     }
 
-    return -1; // Not found
+    throw ValueNotFound("Exception in UnrolledLinkedList::Impl::find: could not find value");
 }
 
 void UnrolledLinkedList::Impl::edit(int index, int newValue)
 {
+    if (index < 0)
+        throw std::out_of_range("Exception in UnrolledLinkedList::Impl::edit: Negative index not allowed");
+
     Node* curr = head;
 
     while (curr)
@@ -243,7 +258,8 @@ void UnrolledLinkedList::Impl::edit(int index, int newValue)
         curr = curr->next;
     }
 
-   // Out of Bounds exception
+    // Out of Bounds exception
+    throw std::out_of_range("Exception in UnrolledLinkedList::Impl::edit: Index out of bounds");
 }
 
 void UnrolledLinkedList::Impl::clear()
@@ -360,10 +376,11 @@ UnrolledLinkedList::UnrolledLinkedList(const UnrolledLinkedList& other)
 
 UnrolledLinkedList& UnrolledLinkedList::operator=(const UnrolledLinkedList& other)
 {
-    if (this != &other) // protection against self-assignment
+    if (this != &other)
     {
-        delete pImpl;
-        pImpl = new Impl(*other.pImpl);
+        Impl* newImpl = new Impl(*other.pImpl); // allocate first
+        delete pImpl;                           // only delete old if allocation succeeded
+        pImpl = newImpl;
     }
     return *this;
 }
@@ -492,7 +509,16 @@ int main()
     list3 += 4;
     std::cout << "list3: " << list3.toString() << std::endl;
     std::cout << "(testing when NODE_CAPACITY = 4) Position of 4 in list3: " << list3[4] << std::endl;
-    std::cout << "Position of 98 in list3: " << list3[98] << std::endl;
+    // Custom Exception Test
+    try
+    {
+        std::cout << "Position of 98 in list3: " << list3[98] << std::endl;
+    }
+    catch(ValueNotFound& e)
+    {
+        std::cout << "Succesfully caught ValueNotFound exception" << std::endl;
+    }
+
 
     // Edit Tests
     std::cout << "\nEdit Tests" << std::endl;
@@ -501,6 +527,24 @@ int main()
     std::cout << "list3: " << list3.toString() << std::endl;
     list3 *= {2, 99};
     std::cout << "list3: " << list3.toString() << std::endl;
+    // Exception Tests
+    try
+    {
+        list3 *= {-2, 99};
+    }
+    catch(std::out_of_range& e)
+    {
+        std::cout << "Succesfully caught out_of_range exception" << std::endl;
+    }
+
+    try
+    {
+        list3 *= {1000, 99};
+    }
+    catch(std::out_of_range& e)
+    {
+        std::cout << "Succesfully caught out_of_range exception" << std::endl;
+    }
 
     // Clear Tests
     std::cout << "\nClear Tests" << std::endl;

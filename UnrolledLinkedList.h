@@ -22,7 +22,7 @@ public:
     UnrolledLinkedList& operator+=(const int value);
     UnrolledLinkedList& operator-=(const int value);
 
-    // Search by Value
+    // Search by Value and return position (-1 if not found) or exception??
     int operator[](const int value) const;
 
     // Replace value at index with new value

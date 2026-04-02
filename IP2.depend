@@ -1,11 +1,14 @@
 # depslib dependency file v1.0
-1775163498 source:c:\users\mariu\onedrive\desktop\uni\2 semestras\cpp-obj\ip2\unrolledlinkedlist.cpp
+1775168865 source:c:\users\mariu\onedrive\desktop\uni\2 semestras\cpp-obj\ip2\unrolledlinkedlist.cpp
+	<string>
 	<sstream>
 	<utility>
+	<exception>
+	<stdexcept>
 	"UnrolledLinkedList.h"
 	<iostream>
 	<iostream>
 
-1775161290 c:\users\mariu\onedrive\desktop\uni\2 semestras\cpp-obj\ip2\unrolledlinkedlist.h
+1775164562 c:\users\mariu\onedrive\desktop\uni\2 semestras\cpp-obj\ip2\unrolledlinkedlist.h
 	<string>
 
