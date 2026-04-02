@@ -25,7 +25,8 @@ public:
     // Search by Value
     int operator[](const int value) const;
 
-    // Edit *= implementation
+    // Replace value at index with new value
+    UnrolledLinkedList& operator*=(std::pair<int,int> edit);
 
     // Clear Object
     void operator!();

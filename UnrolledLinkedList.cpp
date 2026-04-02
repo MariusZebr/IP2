@@ -1,4 +1,5 @@
 #include <sstream>
+#include <utility>
 #include "UnrolledLinkedList.h"
 #define TEST_MODULE
 #include <iostream>
@@ -40,17 +41,20 @@ public:
     void insert(int value);
     void remove(int value);
 
-    // return position of value, -1 if not found
+    // Return position of value, -1 if not found
     int find(int value) const;
 
-    // remove all elements
+    // Replace value at index with newValue
+    void edit(int index, int newValue);
+
+    // Remove all elements
     void clear();
 
     // Comparison
     int compare(const Impl* other) const;
-    // return: -1 if this < other, 0 if equal, 1 if this > other
+    // Return: -1 if this < other, 0 if equal, 1 if this > other
 
-    // convert list to string
+    // Convert list to string
     std::string toString() const;
 
 private:
@@ -224,6 +228,24 @@ int UnrolledLinkedList::Impl::find(int value) const
     return -1; // Not found
 }
 
+void UnrolledLinkedList::Impl::edit(int index, int newValue)
+{
+    Node* curr = head;
+
+    while (curr)
+    {
+        if (index < curr->numElements)
+        {
+            curr->arr[index] = newValue;
+            return;
+        }
+        index -= curr->numElements;
+        curr = curr->next;
+    }
+
+   // Out of Bounds exception
+}
+
 void UnrolledLinkedList::Impl::clear()
 {
     Node* curr = head;
@@ -362,6 +384,12 @@ int UnrolledLinkedList::operator[](int value) const
     return pImpl->find(value);
 }
 
+UnrolledLinkedList& UnrolledLinkedList::operator*=(std::pair<int,int> pair1)
+{
+    pImpl->edit(pair1.first, pair1.second);
+    return *this;
+}
+
 void UnrolledLinkedList::operator!()
 {
     pImpl->clear();
@@ -458,8 +486,19 @@ int main()
     list3 += 1;
     std::cout << "list3: " << list3.toString() << std::endl;
     std::cout << "Position of 1 in list3: " << list3[1] << std::endl;
+    list3 += 2;
+    list3 += 3;
+    list3 += 4;
+    std::cout << "(testing when NODE_CAPACITY = 4) Position of 4 in list3: " << list3[4] << std::endl;
     std::cout << "Position of 98 in list3: " << list3[98] << std::endl;
 
+    // Edit Tests
+    std::cout << "\nEdit Tests" << std::endl;
+    std::cout << "list3: " << list3.toString() << std::endl;
+    list3 *= {0, 5};
+    std::cout << "list3: " << list3.toString() << std::endl;
+    list3 *= {2, 99};
+    std::cout << "list3: " << list3.toString() << std::endl;
     return 0;
 }
 #endif // TEST_MODULE
