@@ -326,7 +326,8 @@ std::string UnrolledLinkedList::Impl::toString() const
 {
     Node* curr = head;
     std::stringstream ss;
-    ss << "|";
+    if (curr)
+        ss << "|";
     while (curr)
     {
         ss << curr->numElements << ": ";
@@ -489,6 +490,7 @@ int main()
     list3 += 2;
     list3 += 3;
     list3 += 4;
+    std::cout << "list3: " << list3.toString() << std::endl;
     std::cout << "(testing when NODE_CAPACITY = 4) Position of 4 in list3: " << list3[4] << std::endl;
     std::cout << "Position of 98 in list3: " << list3[98] << std::endl;
 
@@ -499,6 +501,49 @@ int main()
     std::cout << "list3: " << list3.toString() << std::endl;
     list3 *= {2, 99};
     std::cout << "list3: " << list3.toString() << std::endl;
+
+    // Clear Tests
+    std::cout << "\nClear Tests" << std::endl;
+    std::cout << "list3: " << list3.toString() << std::endl;
+    !list3;
+    std::cout << "list3: " << list3.toString() << std::endl;
+    !list3;
+    std::cout << "list3: " << list3.toString() << std::endl;
+    list3 += 2;
+    std::cout << "list3: " << list3.toString() << std::endl;
+
+    // Comparison Tests
+    std::cout << "\nComparison Tests" << std::endl;
+    datastructures::UnrolledLinkedList list4;
+    list4 += 4;
+    list3 -= 2;
+    list3 += 3;
+    std::cout << "list1: " << list1.toString() << std::endl;
+    std::cout << "list2: " << list2.toString() << std::endl;
+    std::cout << "list3: " << list3.toString() << std::endl;
+    std::cout << "list4: " << list4.toString() << std::endl;
+    std::cout << std::endl;
+
+    std::cout << "list2 > list3: " << (list2 > list3) << std::endl;
+    std::cout << "list2 < list3: " << (list2 < list3) << std::endl;
+    std::cout << "list2 >= list3: " << (list2 >= list3) << std::endl;
+    std::cout << "list2 <= list3: " << (list2 <= list3) << std::endl;
+    std::cout << "list2 == list3: " << (list2 == list3) << std::endl;
+    std::cout << "list2 != list3: " << (list2 != list3) << std::endl;
+    std::cout << std::endl;
+
+    std::cout << "list2 >= list2: " << (list2 >= list2) << std::endl;
+    std::cout << "list2 <= list2: " << (list2 <= list2) << std::endl;
+    std::cout << "list2 == list2: " << (list2 == list2) << std::endl;
+    std::cout << "list2 != list2: " << (list2 != list2) << std::endl;
+    std::cout << std::endl;
+
+    std::cout << "list1 > list2: " << (list1 > list2) << std::endl;
+    std::cout << "list1 < list2: " << (list1 < list2) << std::endl;
+    std::cout << "list1 >= list2: " << (list1 >= list2) << std::endl;
+    std::cout << "list1 <= list2: " << (list1 <= list2) << std::endl;
+    std::cout << "list1 == list2: " << (list1 == list2) << std::endl;
+    std::cout << "list1 != list2: " << (list1 != list2) << std::endl;
     return 0;
 }
 #endif // TEST_MODULE
