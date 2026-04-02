@@ -304,7 +304,7 @@ std::string UnrolledLinkedList::Impl::toString() const
 {
     Node* curr = head;
     std::stringstream ss;
-
+    ss << "|";
     while (curr)
     {
         ss << curr->numElements << ": ";
@@ -414,41 +414,51 @@ int main()
     std::cout << "Insertion tests" << std::endl;
     datastructures::UnrolledLinkedList list1;
     list1 += 1;
-    std::cout << list1.toString() << std::endl;
+    std::cout << "list1: " << list1.toString() << std::endl;
     list1 += 1;
-    std::cout << list1.toString() << std::endl;
+    std::cout << "list1: " << list1.toString() << std::endl;
     list1 += 2;
-    std::cout << list1.toString() << std::endl;
+    std::cout << "list1: " << list1.toString() << std::endl;
     list1 += 3;
-    std::cout << list1.toString() << std::endl;
+    std::cout << "list1: " << list1.toString() << std::endl;
     list1 += 4;
-    std::cout << list1.toString() << std::endl;
+    std::cout << "list1: " << list1.toString() << std::endl;
     list1 += 5;
-    std::cout << list1.toString() << std::endl;
+    std::cout << "list1: " << list1.toString() << std::endl;
     list1 += 5;
-    std::cout << list1.toString() << std::endl;
+    std::cout << "list1: " << list1.toString() << std::endl;
 
     // Deletions Tests
     std::cout << "\nDeletion Tests" << std::endl;
     list1 -= 5;
-    std::cout << list1.toString() << std::endl;
+    std::cout << "list1: " << list1.toString() << std::endl;
     list1 -= 1;
-    std::cout << list1.toString() << std::endl;
+    std::cout << "list1: " << list1.toString() << std::endl;
     list1 -= 2;
-    std::cout << list1.toString() << std::endl;
+    std::cout << "list1: " << list1.toString() << std::endl;
 
     // Copy Tests
     std::cout << "\nCopy Tests" << std::endl;
     datastructures::UnrolledLinkedList list2;
     list2 = list1;
-    std::cout << list1.toString() << std::endl;
-    std::cout << list1.toString() << std::endl;
+    std::cout << "list1: " << list1.toString() << std::endl;
+    std::cout << "list2: " << list2.toString() << std::endl;
     std::cout << std::endl;
 
     list2 += 98;
-    std::cout << list1.toString() << std::endl;
-    std::cout << list2.toString() << std::endl;
+    std::cout << "list1: " << list1.toString() << std::endl;
+    std::cout << "list2: " << list2.toString() << std::endl;
 
+    // Search by Value Tests
+    std::cout << "\nSearch by Value Tests" << std::endl;
+    std::cout << "list2: " << list2.toString() << std::endl;
+    std::cout << "Position of 98 in list2: " << list2[98] << std::endl;
+    datastructures::UnrolledLinkedList list3;
+    list3 += 1;
+    list3 += 1;
+    std::cout << "list3: " << list3.toString() << std::endl;
+    std::cout << "Position of 1 in list3: " << list3[1] << std::endl;
+    std::cout << "Position of 98 in list3: " << list3[98] << std::endl;
 
     return 0;
 }
