@@ -9,9 +9,14 @@ namespace datastructures
 class UnrolledLinkedList
 {
 public:
-    // Constructors/Destructors
+    // Constructor/Destructor
     UnrolledLinkedList();
     ~UnrolledLinkedList();
+
+    // Copy Constructor
+    UnrolledLinkedList(const UnrolledLinkedList& other);
+    // Deep copy
+    UnrolledLinkedList& operator=(const UnrolledLinkedList& other);
 
     // Insert/Delete(first instance) by value
     UnrolledLinkedList& operator+=(const int value);

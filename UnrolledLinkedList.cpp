@@ -14,19 +14,27 @@ public:
     class Node
     {
     public:
+        // Fields
         int *arr;
         int numElements;
         Node* next;
 
+        // Constructor/Destructor
         Node();
         ~Node();
+
+        // Copy Constructor
+        Node(const Node& other);
     };
 
-    // Core functions
+    // Core Functions
 
-    // Constructors/Destructors
+    // Constructor/Destructor
     Impl();
     ~Impl();
+
+    // Copy Constructor
+    Impl(const Impl& other);
 
     // Insert/Delete(first instance of) value
     void insert(int value);
@@ -67,6 +75,15 @@ UnrolledLinkedList::Impl::Node::~Node()
     delete[] arr;
 }
 
+UnrolledLinkedList::Impl::Node::Node(const Node& other)
+{
+    numElements = other.numElements;
+    arr = new int[NODE_CAPACITY];
+    for (int i = 0; i < numElements; ++i)
+        arr[i] = other.arr[i];
+    next = nullptr;  // don’t copy next yet
+}
+
 // Implementation Methods
 UnrolledLinkedList::Impl::Impl()
 {
@@ -76,6 +93,33 @@ UnrolledLinkedList::Impl::Impl()
 UnrolledLinkedList::Impl::~Impl()
 {
     clear();
+}
+
+UnrolledLinkedList::Impl::Impl(const Impl& other)
+{
+    head = nullptr;
+    Node *tail = nullptr;
+    Node *currOther = other.head;
+
+    while(currOther)
+    {
+        Node *newNode = new Node(*currOther); // newNode is a pointer to just made Node
+        newNode->next = nullptr;
+
+        if(!head) // For first node
+        {
+            head = newNode;
+            tail = newNode;
+        }
+        else
+        {
+            // next of current tail(pointer to Node) is newNode
+            tail->next = newNode;
+            // Change current tail into newNode
+            tail = newNode;
+        }
+        currOther = currOther->next;
+    }
 }
 
 void UnrolledLinkedList::Impl::insert(int value)
@@ -285,6 +329,22 @@ UnrolledLinkedList::~UnrolledLinkedList()
 {
     delete pImpl;
 }
+
+UnrolledLinkedList::UnrolledLinkedList(const UnrolledLinkedList& other)
+{
+    pImpl = new Impl(*other.pImpl);
+}
+
+UnrolledLinkedList& UnrolledLinkedList::operator=(const UnrolledLinkedList& other)
+{
+    if (this != &other) // protection against self-assignment
+    {
+        delete pImpl;
+        pImpl = new Impl(*other.pImpl);
+    }
+    return *this;
+}
+
 UnrolledLinkedList& UnrolledLinkedList::operator+=(const int value)
 {
     pImpl->insert(value);
@@ -369,13 +429,27 @@ int main()
     std::cout << list1.toString() << std::endl;
 
     // Deletions Tests
-    std::cout << "Deletions Tests" << std::endl;
+    std::cout << "\nDeletion Tests" << std::endl;
     list1 -= 5;
     std::cout << list1.toString() << std::endl;
     list1 -= 1;
     std::cout << list1.toString() << std::endl;
     list1 -= 2;
     std::cout << list1.toString() << std::endl;
+
+    // Copy Tests
+    std::cout << "\nCopy Tests" << std::endl;
+    datastructures::UnrolledLinkedList list2;
+    list2 = list1;
+    std::cout << list1.toString() << std::endl;
+    std::cout << list1.toString() << std::endl;
+    std::cout << std::endl;
+
+    list2 += 98;
+    std::cout << list1.toString() << std::endl;
+    std::cout << list2.toString() << std::endl;
+
+
     return 0;
 }
 #endif // TEST_MODULE
