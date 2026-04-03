@@ -9,6 +9,9 @@
 #include <iostream> // remove later
 
 // Custom Exception
+namespace datastructures
+{
+
 class ValueNotFound : public std::runtime_error
 {
 public:
@@ -17,8 +20,6 @@ public:
     }
 };
 
-namespace datastructures
-{
 class UnrolledLinkedList::Impl
 {
 private:
