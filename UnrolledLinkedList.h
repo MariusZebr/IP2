@@ -1,5 +1,7 @@
 #ifndef UNROLLEDLINKEDLIST_H_769124
 #define UNROLLEDLINKEDLIST_H_769124
+// AI assistance: ChatGPT was used to help develop and debug
+// portions of this implementation, including operator implementations
 
 #include <string>
 #define RUN_DEBUG
