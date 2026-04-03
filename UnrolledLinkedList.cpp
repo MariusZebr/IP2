@@ -5,17 +5,14 @@
 #include <stdexcept>
 #include "UnrolledLinkedList.h"
 
-// Custom Exception
 namespace datastructures
 {
 
-class ValueNotFound : public std::runtime_error
+// Custom Exception
+ValueNotFound::ValueNotFound(const std::string& message)
+    : std::runtime_error(message)
 {
-public:
-    ValueNotFound(const std::string& message) : std::runtime_error(std::string(message))
-    {
-    }
-};
+}
 
 class UnrolledLinkedList::Impl
 {
@@ -344,12 +341,12 @@ std::string UnrolledLinkedList::Impl::toString() const
         ss << "|";
     while (curr)
     {
-        ss << curr->numElements << ": ";
+        ss << curr->numElements << ":";
         for (int i = 0; i < curr->numElements; ++i)
         {
-            ss << curr->arr[i] << " ";
+            ss << " " << curr->arr[i];
         }
-        ss << "| ";  // separator for different nodes
+        ss << "|";  // separator for different nodes
         curr = curr->next;
     }
 
@@ -448,6 +445,8 @@ std::string UnrolledLinkedList::toString() const
     return pImpl->toString();
 }
 }
+
+
 
 
 

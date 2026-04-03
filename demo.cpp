@@ -1,14 +1,17 @@
+#include <iostream>
+#include <exception>
+#include <stdexcept>
+
 #include "UnrolledLinkedList.h"
 
 //#define DEMO_MODE
-
 #ifdef DEMO_MODE
 int main()
 {
     try
     {
-        // Insertion tests
-        std::cout << "Insertion tests" << std::endl;
+        // Insertion Demo
+        std::cout << "Insertion Demo" << std::endl;
         datastructures::UnrolledLinkedList list1;
         list1 += 1;
         std::cout << "list1: " << list1.toString() << std::endl;
@@ -25,8 +28,8 @@ int main()
         list1 += 5;
         std::cout << "list1: " << list1.toString() << std::endl;
 
-        // Deletions Tests
-        std::cout << "\nDeletion Tests" << std::endl;
+        // Deletions Demo
+        std::cout << "\nDeletion Demo" << std::endl;
         list1 -= 5;
         std::cout << "list1: " << list1.toString() << std::endl;
         list1 -= 1;
@@ -34,8 +37,8 @@ int main()
         list1 -= 2;
         std::cout << "list1: " << list1.toString() << std::endl;
 
-        // Copy Tests
-        std::cout << "\nCopy Tests" << std::endl;
+        // Copy Demo
+        std::cout << "\nCopy Demo" << std::endl;
         datastructures::UnrolledLinkedList list2;
         list2 = list1;
         std::cout << "list1: " << list1.toString() << std::endl;
@@ -46,8 +49,8 @@ int main()
         std::cout << "list1: " << list1.toString() << std::endl;
         std::cout << "list2: " << list2.toString() << std::endl;
 
-        // Search by Value Tests
-        std::cout << "\nSearch by Value Tests" << std::endl;
+        // Search by Value Demo
+        std::cout << "\nSearch by Value Demo" << std::endl;
         std::cout << "list2: " << list2.toString() << std::endl;
         std::cout << "Position of 98 in list2: " << list2[98] << std::endl;
         datastructures::UnrolledLinkedList list3;
@@ -71,8 +74,8 @@ int main()
         }
 
 
-        // Edit Tests
-        std::cout << "\nEdit Tests" << std::endl;
+        // Edit Demo
+        std::cout << "\nEdit Demo" << std::endl;
         std::cout << "list3: " << list3.toString() << std::endl;
         list3 *= {0, 5};
         std::cout << "list3: " << list3.toString() << std::endl;
@@ -97,8 +100,8 @@ int main()
             std::cout << "Succesfully caught out_of_range exception" << std::endl;
         }
 
-        // Clear Tests
-        std::cout << "\nClear Tests" << std::endl;
+        // Clear Demo
+        std::cout << "\nClear Demo" << std::endl;
         std::cout << "list3: " << list3.toString() << std::endl;
         !list3;
         std::cout << "list3: " << list3.toString() << std::endl;
@@ -108,7 +111,7 @@ int main()
         std::cout << "list3: " << list3.toString() << std::endl;
 
         // Comparison Tests
-        std::cout << "\nComparison Tests" << std::endl;
+        std::cout << "\nComparison Demo" << std::endl;
         datastructures::UnrolledLinkedList list4;
         list4 += 4;
         list3 -= 2;
@@ -142,8 +145,8 @@ int main()
     }
     catch(...)
     {
-        cout << "Unexpected error occurred" << endl;
+        std::cout << "Unexpected error occurred" << std::endl;
     }
     return 0;
 }
-#endif
+#endif // DEMO_MODE

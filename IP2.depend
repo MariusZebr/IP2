@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1775248000 source:c:\users\mariu\onedrive\desktop\uni\2 semestras\cpp-obj\ip2\unrolledlinkedlist.cpp
+1775257706 source:c:\users\mariu\onedrive\desktop\uni\2 semestras\cpp-obj\ip2\unrolledlinkedlist.cpp
 	<string>
 	<sstream>
 	<utility>
@@ -7,9 +7,20 @@
 	<stdexcept>
 	"UnrolledLinkedList.h"
 
-1775248048 c:\users\mariu\onedrive\desktop\uni\2 semestras\cpp-obj\ip2\unrolledlinkedlist.h
+1775257674 c:\users\mariu\onedrive\desktop\uni\2 semestras\cpp-obj\ip2\unrolledlinkedlist.h
 	<string>
 
-1775247832 source:c:\users\mariu\onedrive\desktop\uni\2 semestras\cpp-obj\ip2\demo.cpp
+1775258764 source:c:\users\mariu\onedrive\desktop\uni\2 semestras\cpp-obj\ip2\demo.cpp
+	<iostream>
+	<exception>
+	<stdexcept>
+	"UnrolledLinkedList.h"
+
+1775256840 source:c:\users\mariu\onedrive\desktop\uni\2 semestras\cpp-obj\ip2\test.cpp
+	<iostream>
+	<fstream>
+	<sstream>
+	<iomanip>
+	<string>
 	"UnrolledLinkedList.h"
 

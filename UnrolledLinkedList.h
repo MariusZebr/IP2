@@ -1,6 +1,6 @@
 #ifndef UNROLLEDLINKEDLIST_H_769124
 #define UNROLLEDLINKEDLIST_H_769124
-// AI assistance: ChatGPT was used to help develop and debug
+// ChatGPT and help from a colleague was used to help develop and debug
 // portions of this implementation, including operator implementations
 
 #include <string>
@@ -8,6 +8,13 @@
 
 namespace datastructures
 {
+// Custom Exception
+class ValueNotFound : public std::runtime_error
+{
+public:
+    ValueNotFound(const std::string& message);
+};
+
 class UnrolledLinkedList
 {
 public:
