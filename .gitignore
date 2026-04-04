@@ -1,6 +1,5 @@
 *cbp
 *.o
 *.exe
-*.txt
 *.depend
 *.layout

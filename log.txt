@@ -1,0 +1,113 @@
+Insertion Tests
+[PASS] operator +=: toString after 1st insert
+[PASS] operator +=: toString after 4th insert
+[PASS] operator +=: toString after 5th insert
+[PASS] operator +=: toString after 6th insert
+
+Deletion Tests
+[PASS] operator -=: toString after 1st deletion
+[PASS] operator -=: toString after 2nd deletion
+[PASS] operator -=: toString after 3rd deletion
+[PASS] operator -=: toString after 4th deletion
+[PASS] operator -=: toString after 5th deletion
+[PASS] operator -=: toString after 6th deletion
+[PASS] operator -=: toString after 7th deletion
+[PASS] operator -=: toString after 8th deletion
+[PASS] operator -=: toString after 9th deletion
+[PASS] operator -=: toString after 10th deletion
+[PASS] operator -=: toString after 11th deletion
+[PASS] operator -=: toString after 12th deletion
+
+Search by Value Tests
+Exception in UnrolledLinkedList::Impl::find: could not find value
+Succesfully caught 1st ValueNotFound exception
+
+Exception in UnrolledLinkedList::Impl::find: could not find value
+Succesfully caught 2nd ValueNotFound exception
+
+Exception in UnrolledLinkedList::Impl::find: could not find value
+Succesfully caught 3rd ValueNotFound exception
+
+[PASS] operator[]: position after 1st search
+[PASS] operator[]: position after 2nd search
+[PASS] operator[]: position after 3rd search
+[PASS] operator[]: position after 4th search
+[PASS] operator[]: position after 5th search
+
+Edit Tests
+Exception in UnrolledLinkedList::Impl::edit: Index out of bounds
+Succesfully caught 1st out_of_range exception
+
+Exception in UnrolledLinkedList::Impl::edit: Negative index not allowed
+Succesfully caught 2nd out_of_range exception
+
+Exception in UnrolledLinkedList::Impl::edit: Index out of bounds
+Succesfully caught 3rd out_of_range exception
+
+[PASS] operator *=: position after 1st edit
+[PASS] operator *=: toString after 2nd edit
+[PASS] operator *=: toString after 3rd edit
+
+Clear Tests
+[PASS] operator!: toString after 1st clear
+[PASS] operator!: toString after 2nd clear
+[PASS] operator!: toString after 3rd clear
+[PASS] operator!: toString after 4th clear
+
+Comparison Tests
+[PASS] operator ==: toString after 1st comparison
+[PASS] operator !=: toString after 1st comparison
+[PASS] operator <: toString after 1st comparison
+[PASS] operator <=: toString after 1st comparison
+[PASS] operator >: toString after 1st comparison
+[PASS] operator >=: toString after 1st comparison
+
+[PASS] operator ==: toString after 2nd comparison
+[PASS] operator !=: toString after 2nd comparison
+[PASS] operator <: toString after 2nd comparison
+[PASS] operator <=: toString after 2nd comparison
+[PASS] operator >: toString after 2nd comparison
+[PASS] operator >=: toString after 2nd comparison
+
+[PASS] operator ==: toString after 4th comparison
+[PASS] operator !=: toString after 4th comparison
+[PASS] operator <: toString after 4th comparison
+[PASS] operator <=: toString after 4th comparison
+[PASS] operator >: toString after 4th comparison
+[PASS] operator >=: toString after 4th comparison
+
+[PASS] operator ==: toString after 5th comparison
+[PASS] operator !=: toString after 5th comparison
+[PASS] operator <: toString after 5th comparison
+[PASS] operator <=: toString after 5th comparison
+[PASS] operator >: toString after 5th comparison
+[PASS] operator >=: toString after 5th comparison
+
+[PASS] operator ==: toString after 6th comparison
+[PASS] operator !=: toString after 6th comparison
+[PASS] operator <: toString after 6th comparison
+[PASS] operator <=: toString after 6th comparison
+[PASS] operator >: toString after 6th comparison
+[PASS] operator >=: toString after 6th comparison
+
+[PASS] operator ==: toString after 7th comparison
+[PASS] operator !=: toString after 7th comparison
+[PASS] operator <: toString after 7th comparison
+[PASS] operator <=: toString after 7th comparison
+[PASS] operator >: toString after 7th comparison
+[PASS] operator >=: toString after 7th comparison
+
+[PASS] operator ==: toString after 8th comparison
+[PASS] operator !=: toString after 8th comparison
+[PASS] operator <: toString after 8th comparison
+[PASS] operator <=: toString after 8th comparison
+[PASS] operator >: toString after 8th comparison
+[PASS] operator >=: toString after 8th comparison
+
+[PASS] operator ==: toString after 9th comparison
+[PASS] operator !=: toString after 9th comparison
+[PASS] operator <: toString after 9th comparison
+[PASS] operator <=: toString after 9th comparison
+[PASS] operator >: toString after 9th comparison
+[PASS] operator >=: toString after 9th comparison
+
