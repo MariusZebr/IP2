@@ -8,10 +8,10 @@ c: demo.exe
 	./demo.exe
 
 # b) build demo
-b: UnrolledLinkedList.o
+b: demo.exe
 	
 # d) build test
-d: UnrolledLinkedList.o
+d: test.exe
 
 # e) run test
 e: test.exe
