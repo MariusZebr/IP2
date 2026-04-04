@@ -70,6 +70,7 @@ int main()
         }
         catch(datastructures::ValueNotFound& e)
         {
+            std::cout << e.what() << std::endl;
             std::cout << "Succesfully caught ValueNotFound exception" << std::endl;
         }
 
@@ -88,6 +89,7 @@ int main()
         }
         catch(std::out_of_range& e)
         {
+            std::cout << e.what() << std::endl;
             std::cout << "Succesfully caught out_of_range exception" << std::endl;
         }
 
@@ -97,6 +99,7 @@ int main()
         }
         catch(std::out_of_range& e)
         {
+            std::cout << e.what() << std::endl;
             std::cout << "Succesfully caught out_of_range exception" << std::endl;
         }
 

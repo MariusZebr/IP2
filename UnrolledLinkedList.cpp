@@ -198,10 +198,19 @@ void UnrolledLinkedList::Impl::remove(int value)
                 curr->numElements--;
 
                 // Remove node if empty but not head
-                if (curr->numElements == 0 && prev)
+                if (curr->numElements == 0)
                 {
-                    prev->next = curr->next;
-                    delete curr;
+
+                    if(prev == nullptr)
+                    {
+                        head = curr->next;
+                        delete curr;
+                    }
+                    else
+                    {
+                        prev->next = curr->next;
+                        delete curr;
+                    }
                 }
 
                 return; // removed first occurrence
