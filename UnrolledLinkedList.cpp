@@ -28,12 +28,15 @@ namespace Datastructures
             int numElements;
             Node *next;
 
-            // Constructor/Destructor
+            // Constructor
             Node();
-            ~Node();
-
+            
             // Copy Constructor
             Node(const Node &other);
+
+            // Destructor
+            ~Node();
+
         };
 
     private:

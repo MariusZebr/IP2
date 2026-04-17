@@ -22,12 +22,15 @@ namespace Datastructures
         Impl *pImpl;
 
     public:
-        // Constructor/Destructor
+        // Constructor
         UnrolledLinkedList();
-        ~UnrolledLinkedList();
 
         // Copy Constructor
         UnrolledLinkedList(const UnrolledLinkedList &other);
+
+        // Destructor
+        ~UnrolledLinkedList();
+
         // Deep copy
         UnrolledLinkedList &operator=(const UnrolledLinkedList &other);
 
