@@ -12,7 +12,7 @@ int main()
     {
         // Insertion Demo
         std::cout << "Insertion Demo" << std::endl;
-        datastructures::UnrolledLinkedList list1;
+        Datastructures::UnrolledLinkedList list1;
         list1 += 1;
         std::cout << "list1: " << list1.toString() << std::endl;
         list1 += 1;
@@ -39,7 +39,7 @@ int main()
 
         // Copy Demo
         std::cout << "\nCopy Demo" << std::endl;
-        datastructures::UnrolledLinkedList list2;
+        Datastructures::UnrolledLinkedList list2;
         list2 = list1;
         std::cout << "list1: " << list1.toString() << std::endl;
         std::cout << "list2: " << list2.toString() << std::endl;
@@ -53,7 +53,7 @@ int main()
         std::cout << "\nSearch by Value Demo" << std::endl;
         std::cout << "list2: " << list2.toString() << std::endl;
         std::cout << "Position of 98 in list2: " << list2[98] << std::endl;
-        datastructures::UnrolledLinkedList list3;
+        Datastructures::UnrolledLinkedList list3;
         list3 += 1;
         list3 += 1;
         std::cout << "list3: " << list3.toString() << std::endl;
@@ -68,7 +68,7 @@ int main()
         {
             std::cout << "Position of 98 in list3: " << list3[98] << std::endl;
         }
-        catch(datastructures::ValueNotFound& e)
+        catch(Datastructures::ValueNotFound& e)
         {
             std::cout << e.what() << std::endl;
             std::cout << "Succesfully caught ValueNotFound exception" << std::endl;
@@ -115,7 +115,7 @@ int main()
 
         // Comparison Tests
         std::cout << "\nComparison Demo" << std::endl;
-        datastructures::UnrolledLinkedList list4;
+        Datastructures::UnrolledLinkedList list4;
         list4 += 4;
         list3 -= 2;
         list3 += 3;

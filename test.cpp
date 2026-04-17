@@ -29,7 +29,7 @@ int main()
         fout.open("log.txt");
 
         fout << "Insertion Tests" << std::endl;
-        datastructures::UnrolledLinkedList list1;
+        Datastructures::UnrolledLinkedList list1;
         list1 += 1;
         report(fout, "operator +=: toString after 1st insert", list1.toString() == "|1: 1|");
         list1 += 2;
@@ -43,7 +43,7 @@ int main()
         report(fout, "operator +=: toString after 6th insert", list1.toString() == "|1: -1|");
 
         fout << "\nDeletion Tests" << std::endl;
-        datastructures::UnrolledLinkedList list2;
+        Datastructures::UnrolledLinkedList list2;
         list2 += 1;
         list2 -= 1;
         report(fout, "operator -=: toString after 1st deletion", list2.toString() == "");
@@ -125,13 +125,13 @@ int main()
         !list2;
 
         fout << "\nSearch by Value Tests" << std::endl;
-        datastructures::UnrolledLinkedList list3;
+        Datastructures::UnrolledLinkedList list3;
         // Exception Tests
         try
         {
             int num = list3[1];
         }
-        catch(datastructures::ValueNotFound& e)
+        catch(Datastructures::ValueNotFound& e)
         {
             fout << e.what() << std::endl;
             fout << "Succesfully caught 1st ValueNotFound exception" << std::endl;
@@ -144,7 +144,7 @@ int main()
         {
             int num = list3[1];
         }
-        catch(datastructures::ValueNotFound& e)
+        catch(Datastructures::ValueNotFound& e)
         {
             fout << e.what() << std::endl;
             fout << "Succesfully caught 2nd ValueNotFound exception" << std::endl;
@@ -161,7 +161,7 @@ int main()
         {
             int num = list3[6];
         }
-        catch(datastructures::ValueNotFound& e)
+        catch(Datastructures::ValueNotFound& e)
         {
             fout << e.what() << std::endl;
             fout << "Succesfully caught 3rd ValueNotFound exception" << std::endl;
@@ -204,7 +204,7 @@ int main()
 
         fout << "\nEdit Tests" << std::endl;
         // Exception Tests
-        datastructures::UnrolledLinkedList list4;
+        Datastructures::UnrolledLinkedList list4;
         try
         {
             list4 *= {0, 4};
@@ -265,7 +265,7 @@ int main()
         !list4;
 
         fout << "\nClear Tests" << std::endl;
-        datastructures::UnrolledLinkedList list5;
+        Datastructures::UnrolledLinkedList list5;
         !list5;
         report(fout, "operator!: toString after 1st clear", list5.toString() == "");
 
@@ -286,8 +286,8 @@ int main()
         report(fout, "operator!: toString after 4th clear", list5.toString() == "");
 
         fout << "\nComparison Tests" << std::endl;
-        datastructures::UnrolledLinkedList list6_1;
-        datastructures::UnrolledLinkedList list6_2;
+        Datastructures::UnrolledLinkedList list6_1;
+        Datastructures::UnrolledLinkedList list6_2;
 
         report(fout, "operator ==: toString after 1st comparison", (list6_1 == list6_2) == true);
         report(fout, "operator !=: toString after 1st comparison", (list6_1 != list6_2) == false);

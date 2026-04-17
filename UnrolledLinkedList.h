@@ -6,57 +6,54 @@
 #include <string>
 #define RUN_DEBUG
 
-namespace datastructures
+namespace Datastructures
 {
-// Custom Exception
-class ValueNotFound : public std::runtime_error
-{
-public:
-    ValueNotFound(const std::string& message);
-};
+    // Custom Exception
+    class ValueNotFound : public std::runtime_error
+    {
+    public:
+        ValueNotFound(const std::string &message);
+    };
 
-class UnrolledLinkedList
-{
-public:
-    // Constructor/Destructor
-    UnrolledLinkedList();
-    ~UnrolledLinkedList();
+    class UnrolledLinkedList
+    {
+    private:
+        class Impl;
+        Impl *pImpl;
 
-    // Copy Constructor
-    UnrolledLinkedList(const UnrolledLinkedList& other);
-    // Deep copy
-    UnrolledLinkedList& operator=(const UnrolledLinkedList& other);
+    public:
+        // Constructor/Destructor
+        UnrolledLinkedList();
+        ~UnrolledLinkedList();
 
-    // Insert/Delete(first instance) by value
-    UnrolledLinkedList& operator+=(const int value);
-    UnrolledLinkedList& operator-=(const int value);
+        // Copy Constructor
+        UnrolledLinkedList(const UnrolledLinkedList &other);
+        // Deep copy
+        UnrolledLinkedList &operator=(const UnrolledLinkedList &other);
 
-    // Search by Value and return position
-    int operator[](const int value) const;
+        // Insert/Delete(first instance) by value
+        UnrolledLinkedList &operator+=(const int value);
+        UnrolledLinkedList &operator-=(const int value);
 
-    // Replace value at index with new value
-    UnrolledLinkedList& operator*=(std::pair<int,int> edit);
+        // Search by Value and return position
+        int operator[](const int value) const;
 
-    // Clear Object
-    void operator!();
+        // Replace value at index with new value
+        UnrolledLinkedList &operator*=(std::pair<int, int> edit);
 
-    // Lexicographical Comparisons of Objects
-    bool operator==(const UnrolledLinkedList& other) const;
-    bool operator!=(const UnrolledLinkedList& other) const;
-    bool operator< (const UnrolledLinkedList& other) const;
-    bool operator<=(const UnrolledLinkedList& other) const;
-    bool operator> (const UnrolledLinkedList& other) const;
-    bool operator>=(const UnrolledLinkedList& other) const;
+        // Clear Object
+        void operator!();
 
-    std::string toString() const;
+        // Lexicographical Comparisons of Objects
+        bool operator==(const UnrolledLinkedList &other) const;
+        bool operator!=(const UnrolledLinkedList &other) const;
+        bool operator<(const UnrolledLinkedList &other) const;
+        bool operator<=(const UnrolledLinkedList &other) const;
+        bool operator>(const UnrolledLinkedList &other) const;
+        bool operator>=(const UnrolledLinkedList &other) const;
 
-private:
-    class Impl;
-    Impl* pImpl;
-};
+        std::string toString() const;
+    };
 }
 
-
 #endif // UNROLLEDLINKEDLIST_H_769124
-
-
