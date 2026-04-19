@@ -84,17 +84,12 @@ namespace Datastructures
 
     // Definitions
 
-    // Node Constructors/Destructors
+    // Node Constructor
     UnrolledLinkedList::Impl::Node::Node()
     {
         numElements = 0;
         next = nullptr;
         arr = new int[NODE_CAPACITY];
-    }
-
-    UnrolledLinkedList::Impl::Node::~Node()
-    {
-        delete[] arr;
     }
 
     UnrolledLinkedList::Impl::Node::Node(const Node &other)
@@ -106,17 +101,17 @@ namespace Datastructures
         next = nullptr; // don't copy next yet
     }
 
+    UnrolledLinkedList::Impl::Node::~Node()
+    {
+        delete[] arr;
+    }
+
     // Implementation Methods
     UnrolledLinkedList::Impl::Impl()
     {
         head = nullptr;
     }
-
-    UnrolledLinkedList::Impl::~Impl()
-    {
-        clear();
-    }
-
+    
     UnrolledLinkedList::Impl::Impl(const Impl &other)
     {
         head = nullptr;
@@ -142,6 +137,11 @@ namespace Datastructures
             }
             currOther = currOther->next;
         }
+    }
+
+    UnrolledLinkedList::Impl::~Impl()
+    {
+        clear();
     }
 
     void UnrolledLinkedList::Impl::insert(int value)
@@ -406,14 +406,15 @@ namespace Datastructures
     {
         pImpl = new Impl();
     }
-    UnrolledLinkedList::~UnrolledLinkedList()
-    {
-        delete pImpl;
-    }
 
     UnrolledLinkedList::UnrolledLinkedList(const UnrolledLinkedList &other)
     {
         pImpl = new Impl(*other.pImpl);
+    }
+
+    UnrolledLinkedList::~UnrolledLinkedList()
+    {
+        delete pImpl;
     }
 
     UnrolledLinkedList &UnrolledLinkedList::operator=(const UnrolledLinkedList &other)
@@ -496,6 +497,7 @@ namespace Datastructures
     {
         return pImpl->getSize();
     }
+    
     std::string UnrolledLinkedList::toString() const
     {
         return pImpl->toString();

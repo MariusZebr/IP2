@@ -28,11 +28,11 @@ namespace Datastructures
         // Copy Constructor
         UnrolledLinkedList(const UnrolledLinkedList &other);
 
-        // Destructor
-        ~UnrolledLinkedList();
-
         // Deep copy
         UnrolledLinkedList &operator=(const UnrolledLinkedList &other);
+        
+        // Destructor
+        ~UnrolledLinkedList();
 
         // Insert/Delete(first instance) by value
         UnrolledLinkedList &operator+=(const int value);
