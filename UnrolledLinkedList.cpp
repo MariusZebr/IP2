@@ -111,7 +111,7 @@ namespace Datastructures
     {
         head = nullptr;
     }
-    
+
     UnrolledLinkedList::Impl::Impl(const Impl &other)
     {
         head = nullptr;
@@ -265,7 +265,7 @@ namespace Datastructures
         while (curr)
         {
             if (index < curr->numElements)
-                return curr->arr[index];   
+                return curr->arr[index];
             index -= curr->numElements;
             curr = curr->next;
         }
@@ -372,7 +372,7 @@ namespace Datastructures
         return result;
     }
 
-    int UnrolledLinkedList::Impl::getSize() const 
+    int UnrolledLinkedList::Impl::getSize() const
     {
         int size = 0;
         for (Node *curr = head; curr; curr = curr->next)
@@ -419,12 +419,8 @@ namespace Datastructures
 
     UnrolledLinkedList &UnrolledLinkedList::operator=(const UnrolledLinkedList &other)
     {
-        if (this != &other)
-        {
-            Impl *newImpl = new Impl(*other.pImpl); // allocate first
-            delete pImpl;                           // only delete old if allocation succeeded
-            pImpl = newImpl;
-        }
+        delete pImpl;
+        pImpl = new Impl(*other.pImpl);
         return *this;
     }
 
@@ -493,11 +489,11 @@ namespace Datastructures
         return (result == 1) || (result == 0);
     }
 
-    int UnrolledLinkedList::getSize() const 
+    int UnrolledLinkedList::getSize() const
     {
         return pImpl->getSize();
     }
-    
+
     std::string UnrolledLinkedList::toString() const
     {
         return pImpl->toString();

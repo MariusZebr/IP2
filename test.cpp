@@ -152,9 +152,17 @@ int main()
         report(fout, "operator =: toString after 3rd deep copy", list1.toString() == "|2: 1 2|3: 3 4 5|" && list2.toString() == "|2: 1 2|3: 3 4 5|");
         list2 -= 4;
         report(fout, "operator =: toString after 3rd deep copy", list1.toString() == "|2: 1 2|3: 3 4 5|" && list2.toString() == "|2: 1 2|2: 3 5|");
-        
-        list1 = list1;
-        report(fout, "operator =: toString after 4th deep copy", list1.toString() == "|2: 1 2|3: 3 4 5|");
+        !list1;
+        !list2;
+
+        list2 += 1;
+        list2 += 2;
+        list2 += 3;
+        list2 += 4;
+        list2 += 5;
+        list2 = list2;
+        report(fout, "operator =: toString after 4th deep copy", list2.toString() == "|2: 1 2|3: 3 4 5|");
+        list2 += 99;
 
         fout << "\nSearch by Value Tests" << std::endl;
         Datastructures::UnrolledLinkedList list3;

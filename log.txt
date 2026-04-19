@@ -25,7 +25,7 @@ Deep Copy Tests
 [PASS] operator =: toString after 2nd deep copy
 [PASS] operator =: toString after 3rd deep copy
 [PASS] operator =: toString after 3rd deep copy
-[PASS] operator =: toString after 3rd deep copy
+[PASS] operator =: toString after 4th deep copy
 
 Search by Value Tests
 Exception in UnrolledLinkedList::Impl::find: could not find value
