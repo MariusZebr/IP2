@@ -124,6 +124,38 @@ int main()
         report(fout, "operator -=: toString after 12th deletion", list2.toString() == "|1: 2|");
         !list2;
 
+        fout << "\nDeep Copy Tests" << std::endl;
+        list1 = list2;
+        report(fout, "operator =: toString after 1st deep copy", list1.toString() == "" && list2.toString() == "");
+        list1 += 1;
+        report(fout, "operator =: toString after 1st deep copy", list1.toString() == "|1: 1|" && list2.toString() == "");
+        !list1;
+        !list2;
+
+        list1 += 1;
+        list2 += 2;
+        list1 = list2;
+        report(fout, "operator =: toString after 2nd deep copy", list1.toString() == "|1: 2|" && list2.toString() == "|1: 2|");
+        list1 += 3;
+        report(fout, "operator =: toString after 2nd deep copy", list1.toString() == "|2: 2 3|" && list2.toString() == "|1: 2|");
+        !list1;
+        !list2;
+
+        list1 += 1;
+        list1 += 2;
+        list2 += 1;
+        list2 += 2;
+        list2 += 3;
+        list2 += 4;
+        list2 += 5;
+        list1 = list2;
+        report(fout, "operator =: toString after 3rd deep copy", list1.toString() == "|2: 1 2|3: 3 4 5|" && list2.toString() == "|2: 1 2|3: 3 4 5|");
+        list2 -= 4;
+        report(fout, "operator =: toString after 3rd deep copy", list1.toString() == "|2: 1 2|3: 3 4 5|" && list2.toString() == "|2: 1 2|2: 3 5|");
+        
+        list1 = list1;
+        report(fout, "operator =: toString after 4th deep copy", list1.toString() == "|2: 1 2|3: 3 4 5|");
+
         fout << "\nSearch by Value Tests" << std::endl;
         Datastructures::UnrolledLinkedList list3;
         // Exception Tests

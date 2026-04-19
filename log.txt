@@ -18,6 +18,15 @@ Deletion Tests
 [PASS] operator -=: toString after 11th deletion
 [PASS] operator -=: toString after 12th deletion
 
+Deep Copy Tests
+[PASS] operator =: toString after 1st deep copy
+[PASS] operator =: toString after 1st deep copy
+[PASS] operator =: toString after 2nd deep copy
+[PASS] operator =: toString after 2nd deep copy
+[PASS] operator =: toString after 3rd deep copy
+[PASS] operator =: toString after 3rd deep copy
+[PASS] operator =: toString after 3rd deep copy
+
 Search by Value Tests
 Exception in UnrolledLinkedList::Impl::find: could not find value
 Succesfully caught 1st ValueNotFound exception
