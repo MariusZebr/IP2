@@ -41,8 +41,11 @@ namespace Datastructures
         // Search by Value and return position
         int operator[](const int value) const;
 
+        // Get value at index
+        int at(const int index) const; 
+
         // Replace value at index with new value
-        UnrolledLinkedList &operator*=(std::pair<int, int> edit);
+        UnrolledLinkedList &operator*=(const std::pair<int, int> edit);
 
         // Clear Object
         void operator!();
@@ -54,6 +57,9 @@ namespace Datastructures
         bool operator<=(const UnrolledLinkedList &other) const;
         bool operator>(const UnrolledLinkedList &other) const;
         bool operator>=(const UnrolledLinkedList &other) const;
+
+        // Get Current Size of UnrolledLinkedList
+        int getSize() const;
 
         std::string toString() const;
     };

@@ -202,6 +202,67 @@ int main()
         report(fout, "operator[]: position after 5th search", list3[-1] == 0);
         !list3;
 
+        fout << "\nGet Value Tests" << std::endl;
+        // Exception Tests
+        try
+        {
+            int num = list3.at(0);
+        }
+        catch(std::out_of_range& e)
+        {
+            fout << e.what() << std::endl;
+            fout << "Succesfully caught 1st out_of_range exception" << std::endl;
+        }
+        !list3;
+        fout << std::endl;
+
+        list3 += 2;
+        try
+        {
+            int num = list3.at(1);
+        }
+        catch(std::out_of_range& e)
+        {
+            fout << e.what() << std::endl;
+            fout << "Succesfully caught 2nd out_of_range exception" << std::endl;
+        }
+        !list3;
+        fout << std::endl;
+
+        list3 += 1;
+        list3 += 2;
+        list3 += 3;
+        list3 += 4;
+        list3 += 5;
+        try
+        {
+            int num = list3.at(6);
+        }
+        catch(std::out_of_range& e)
+        {
+            fout << e.what() << std::endl;
+            fout << "Succesfully caught 3rd out_of_range exception" << std::endl;
+        }
+        !list3;
+        fout << std::endl;
+
+        list3 += 1;
+        report(fout, "at(): position after 1st search", list3.at(0) == 1);
+        !list3;
+
+        list3 += 1;
+        list3 += 2;
+        list3 += 3;
+        list3 += 4;
+        list3 += 5;
+        report(fout, "at(): position after 2nd search", list3.at(4) == 5);
+        !list3;
+
+        list3 += -1;
+        list3 += 2;
+        report(fout, "at():  position after 3rd search", list3.at(0) == -1);
+        !list3;
+
         fout << "\nEdit Tests" << std::endl;
         // Exception Tests
         Datastructures::UnrolledLinkedList list4;
@@ -289,34 +350,34 @@ int main()
         Datastructures::UnrolledLinkedList list6_1;
         Datastructures::UnrolledLinkedList list6_2;
 
-        report(fout, "operator ==: toString after 1st comparison", (list6_1 == list6_2) == true);
-        report(fout, "operator !=: toString after 1st comparison", (list6_1 != list6_2) == false);
-        report(fout, "operator <: toString after 1st comparison", (list6_1 < list6_2) == false);
-        report(fout, "operator <=: toString after 1st comparison", (list6_1 <= list6_2) == true);
-        report(fout, "operator >: toString after 1st comparison", (list6_1 > list6_2) == false);
-        report(fout, "operator >=: toString after 1st comparison", (list6_1 >= list6_2) == true);
+        report(fout, "operator ==: after 1st comparison", (list6_1 == list6_2) == true);
+        report(fout, "operator !=: after 1st comparison", (list6_1 != list6_2) == false);
+        report(fout, "operator <: after 1st comparison", (list6_1 < list6_2) == false);
+        report(fout, "operator <=: after 1st comparison", (list6_1 <= list6_2) == true);
+        report(fout, "operator >: after 1st comparison", (list6_1 > list6_2) == false);
+        report(fout, "operator >=: after 1st comparison", (list6_1 >= list6_2) == true);
         fout << std::endl;
 
         list6_1 += 1;
         list6_2 += 1;
-        report(fout, "operator ==: toString after 2nd comparison", (list6_1 == list6_2) == true);
-        report(fout, "operator !=: toString after 2nd comparison", (list6_1 != list6_2) == false);
-        report(fout, "operator <: toString after 2nd comparison", (list6_1 < list6_2) == false);
-        report(fout, "operator <=: toString after 2nd comparison", (list6_1 <= list6_2) == true);
-        report(fout, "operator >: toString after 2nd comparison", (list6_1 > list6_2) == false);
-        report(fout, "operator >=: toString after 2nd comparison", (list6_1 >= list6_2) == true);
+        report(fout, "operator ==: after 2nd comparison", (list6_1 == list6_2) == true);
+        report(fout, "operator !=: after 2nd comparison", (list6_1 != list6_2) == false);
+        report(fout, "operator <: after 2nd comparison", (list6_1 < list6_2) == false);
+        report(fout, "operator <=: after 2nd comparison", (list6_1 <= list6_2) == true);
+        report(fout, "operator >: after 2nd comparison", (list6_1 > list6_2) == false);
+        report(fout, "operator >=: after 2nd comparison", (list6_1 >= list6_2) == true);
         !list6_1;
         !list6_2;
         fout << std::endl;
 
         list6_1 += 1;
         list6_2 += 2;
-        report(fout, "operator ==: toString after 4th comparison", (list6_1 == list6_2) == false);
-        report(fout, "operator !=: toString after 4th comparison", (list6_1 != list6_2) == true);
-        report(fout, "operator <: toString after 4th comparison", (list6_1 < list6_2) == true);
-        report(fout, "operator <=: toString after 4th comparison", (list6_1 <= list6_2) == true);
-        report(fout, "operator >: toString after 4th comparison", (list6_1 > list6_2) == false);
-        report(fout, "operator >=: toString after 4th comparison", (list6_1 >= list6_2) == false);
+        report(fout, "operator ==: after 3rd comparison", (list6_1 == list6_2) == false);
+        report(fout, "operator !=: after 3rd comparison", (list6_1 != list6_2) == true);
+        report(fout, "operator <: after 3rd comparison", (list6_1 < list6_2) == true);
+        report(fout, "operator <=: after 3rd comparison", (list6_1 <= list6_2) == true);
+        report(fout, "operator >: after 3rd comparison", (list6_1 > list6_2) == false);
+        report(fout, "operator >=: after 3rd comparison", (list6_1 >= list6_2) == false);
         !list6_1;
         !list6_2;
         fout << std::endl;
@@ -325,12 +386,12 @@ int main()
         list6_1 += 1;
         list6_2 += 0;
         list6_2 += 2;
-        report(fout, "operator ==: toString after 5th comparison", (list6_1 == list6_2) == false);
-        report(fout, "operator !=: toString after 5th comparison", (list6_1 != list6_2) == true);
-        report(fout, "operator <: toString after 5th comparison", (list6_1 < list6_2) == true);
-        report(fout, "operator <=: toString after 5th comparison", (list6_1 <= list6_2) == true);
-        report(fout, "operator >: toString after 5th comparison", (list6_1 > list6_2) == false);
-        report(fout, "operator >=: toString after 5th comparison", (list6_1 >= list6_2) == false);
+        report(fout, "operator ==: after 4th comparison", (list6_1 == list6_2) == false);
+        report(fout, "operator !=: after 4th comparison", (list6_1 != list6_2) == true);
+        report(fout, "operator <: after 4th comparison", (list6_1 < list6_2) == true);
+        report(fout, "operator <=: after 4th comparison", (list6_1 <= list6_2) == true);
+        report(fout, "operator >: after 4th comparison", (list6_1 > list6_2) == false);
+        report(fout, "operator >=: after 4th comparison", (list6_1 >= list6_2) == false);
         !list6_1;
         !list6_2;
         fout << std::endl;
@@ -346,23 +407,23 @@ int main()
         list6_2 += 1;
         list6_2 += 1;
         list6_2 += 2;
-        report(fout, "operator ==: toString after 6th comparison", (list6_1 == list6_2) == false);
-        report(fout, "operator !=: toString after 6th comparison", (list6_1 != list6_2) == true);
-        report(fout, "operator <: toString after 6th comparison", (list6_1 < list6_2) == true);
-        report(fout, "operator <=: toString after 6th comparison", (list6_1 <= list6_2) == true);
-        report(fout, "operator >: toString after 6th comparison", (list6_1 > list6_2) == false);
-        report(fout, "operator >=: toString after 6th comparison", (list6_1 >= list6_2) == false);
+        report(fout, "operator ==: after 5th comparison", (list6_1 == list6_2) == false);
+        report(fout, "operator !=: after 5th comparison", (list6_1 != list6_2) == true);
+        report(fout, "operator <: after 5th comparison", (list6_1 < list6_2) == true);
+        report(fout, "operator <=: after 5th comparison", (list6_1 <= list6_2) == true);
+        report(fout, "operator >: after 5th comparison", (list6_1 > list6_2) == false);
+        report(fout, "operator >=: after 5th comparison", (list6_1 >= list6_2) == false);
         !list6_1;
         !list6_2;
         fout << std::endl;
 
         list6_2 += 2;
-        report(fout, "operator ==: toString after 7th comparison", (list6_1 == list6_2) == false);
-        report(fout, "operator !=: toString after 7th comparison", (list6_1 != list6_2) == true);
-        report(fout, "operator <: toString after 7th comparison", (list6_1 < list6_2) == true);
-        report(fout, "operator <=: toString after 7th comparison", (list6_1 <= list6_2) == true);
-        report(fout, "operator >: toString after 7th comparison", (list6_1 > list6_2) == false);
-        report(fout, "operator >=: toString after 7th comparison", (list6_1 >= list6_2) == false);
+        report(fout, "operator ==: after 6th comparison", (list6_1 == list6_2) == false);
+        report(fout, "operator !=: after 6th comparison", (list6_1 != list6_2) == true);
+        report(fout, "operator <: after 6th comparison", (list6_1 < list6_2) == true);
+        report(fout, "operator <=: after 6th comparison", (list6_1 <= list6_2) == true);
+        report(fout, "operator >: after 6th comparison", (list6_1 > list6_2) == false);
+        report(fout, "operator >=: after 6th comparison", (list6_1 >= list6_2) == false);
         !list6_1;
         !list6_2;
         fout << std::endl;
@@ -377,27 +438,37 @@ int main()
         list6_2 += 3;
         list6_2 += 4;
         list6_2 += 5;
-        report(fout, "operator ==: toString after 8th comparison", (list6_1 == list6_2) == false);
-        report(fout, "operator !=: toString after 8th comparison", (list6_1 != list6_2) == true);
-        report(fout, "operator <: toString after 8th comparison", (list6_1 < list6_2) == true);
-        report(fout, "operator <=: toString after 8th comparison", (list6_1 <= list6_2) == true);
-        report(fout, "operator >: toString after 8th comparison", (list6_1 > list6_2) == false);
-        report(fout, "operator >=: toString after 8th comparison", (list6_1 >= list6_2) == false);
+        report(fout, "operator ==: after 7th comparison", (list6_1 == list6_2) == false);
+        report(fout, "operator !=: after 7th comparison", (list6_1 != list6_2) == true);
+        report(fout, "operator <: after 7th comparison", (list6_1 < list6_2) == true);
+        report(fout, "operator <=: after 7th comparison", (list6_1 <= list6_2) == true);
+        report(fout, "operator >: after 7th comparison", (list6_1 > list6_2) == false);
+        report(fout, "operator >=: after 7th comparison", (list6_1 >= list6_2) == false);
         fout << std::endl;
         !list6_1;
         !list6_2;
 
         list6_1 += -2;
         list6_2 += -1;
-        report(fout, "operator ==: toString after 9th comparison", (list6_1 == list6_2) == false);
-        report(fout, "operator !=: toString after 9th comparison", (list6_1 != list6_2) == true);
-        report(fout, "operator <: toString after 9th comparison", (list6_1 < list6_2) == true);
-        report(fout, "operator <=: toString after 9th comparison", (list6_1 <= list6_2) == true);
-        report(fout, "operator >: toString after 9th comparison", (list6_1 > list6_2) == false);
-        report(fout, "operator >=: toString after 9th comparison", (list6_1 >= list6_2) == false);
-        fout << std::endl;
+        report(fout, "operator ==: after 8th comparison", (list6_1 == list6_2) == false);
+        report(fout, "operator !=: after 8th comparison", (list6_1 != list6_2) == true);
+        report(fout, "operator <: after 8th comparison", (list6_1 < list6_2) == true);
+        report(fout, "operator <=: after 8th comparison", (list6_1 <= list6_2) == true);
+        report(fout, "operator >: after 8th comparison", (list6_1 > list6_2) == false);
+        report(fout, "operator >=: after 8th comparison", (list6_1 >= list6_2) == false);
         !list6_1;
         !list6_2;
+
+        fout << "\nGet Size Tests" << std::endl;
+        Datastructures::UnrolledLinkedList list7;
+        report(fout, "getSize(): 1st", list7.getSize() == 0);
+        list7 += 1;
+        report(fout, "getSize(): 2nd", list7.getSize() == 1);
+        list7 += 2;
+        list7 += 3;
+        list7 += 4;
+        list7 += 5;
+        report(fout, "getSize(): 2nd", list7.getSize() == 5);
     }
     catch(...)
     {

@@ -30,13 +30,12 @@ namespace Datastructures
 
             // Constructor
             Node();
-            
+
             // Copy Constructor
             Node(const Node &other);
 
             // Destructor
             ~Node();
-
         };
 
     private:
@@ -45,12 +44,14 @@ namespace Datastructures
     public:
         // Core Functions
 
-        // Constructor/Destructor
+        // Constructor
         Impl();
-        ~Impl();
 
         // Copy Constructor
         Impl(const Impl &other);
+
+        // Destructor
+        ~Impl();
 
         // Insert/Delete(first instance of) value
         void insert(int value);
@@ -58,6 +59,9 @@ namespace Datastructures
 
         // Return position of value, ValueNotFound exception if not found
         int find(int value) const;
+
+        // Return value at the position
+        int getValue(int index) const;
 
         // Replace value at index with newValue
         void edit(int index, int newValue);
@@ -68,6 +72,9 @@ namespace Datastructures
         // Comparison
         int compare(const Impl *other) const;
         // Return: -1 if this < other, 0 if equal, 1 if this > other
+
+        // Get Current Size of UnrolledLinkedList
+        int getSize() const;
 
         // Convert list to string
         std::string toString() const;
@@ -96,7 +103,7 @@ namespace Datastructures
         arr = new int[NODE_CAPACITY];
         for (int i = 0; i < numElements; ++i)
             arr[i] = other.arr[i];
-        next = nullptr; // don�t copy next yet
+        next = nullptr; // don't copy next yet
     }
 
     // Implementation Methods
@@ -248,6 +255,25 @@ namespace Datastructures
         throw ValueNotFound("Exception in UnrolledLinkedList::Impl::find: could not find value");
     }
 
+    int UnrolledLinkedList::Impl::getValue(int index) const
+    {
+        if (index < 0)
+            throw std::out_of_range("Exception in UnrolledLinkedList::Impl::getValue: Negative index not allowed");
+
+        Node *curr = head;
+
+        while (curr)
+        {
+            if (index < curr->numElements)
+                return curr->arr[index];   
+            index -= curr->numElements;
+            curr = curr->next;
+        }
+
+        // Out of Bounds exception
+        throw std::out_of_range("Exception in UnrolledLinkedList::Impl::getValue: Index out of bounds");
+    }
+
     void UnrolledLinkedList::Impl::edit(int index, int newValue)
     {
         if (index < 0)
@@ -346,6 +372,14 @@ namespace Datastructures
         return result;
     }
 
+    int UnrolledLinkedList::Impl::getSize() const 
+    {
+        int size = 0;
+        for (Node *curr = head; curr; curr = curr->next)
+            size += curr->numElements;
+        return size;
+    }
+
     std::string UnrolledLinkedList::Impl::toString() const
     {
         Node *curr = head;
@@ -405,12 +439,17 @@ namespace Datastructures
         return *this;
     }
 
-    int UnrolledLinkedList::operator[](int value) const
+    int UnrolledLinkedList::operator[](const int value) const
     {
         return pImpl->find(value);
     }
 
-    UnrolledLinkedList &UnrolledLinkedList::operator*=(std::pair<int, int> pair1)
+    int UnrolledLinkedList::at(const int index) const
+    {
+        return pImpl->getValue(index);
+    }
+
+    UnrolledLinkedList &UnrolledLinkedList::operator*=(const std::pair<int, int> pair1)
     {
         pImpl->edit(pair1.first, pair1.second);
         return *this;
@@ -453,6 +492,10 @@ namespace Datastructures
         return (result == 1) || (result == 0);
     }
 
+    int UnrolledLinkedList::getSize() const 
+    {
+        return pImpl->getSize();
+    }
     std::string UnrolledLinkedList::toString() const
     {
         return pImpl->toString();

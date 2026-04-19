@@ -74,6 +74,32 @@ int main()
             std::cout << "Succesfully caught ValueNotFound exception" << std::endl;
         }
 
+        // Get Value Demo
+        std::cout << "\nGet Value Demo" << std::endl;
+        std::cout << "list3: " << list3.toString() << std::endl;
+        std::cout << "Value at the position of 0 in list3: " << list3.at(0) << std::endl;
+        std::cout << "Value at the position of 1 in list3: " << list3.at(1) << std::endl;
+        std::cout << "Value at the position of 4 in list3: " << list3.at(4) << std::endl;
+        // Exception Tests
+        try
+        {
+            std::cout << "Value at the position of -1 in list3: " << list3.at(-1) << std::endl;
+        }
+        catch(std::out_of_range& e)
+        {
+            std::cout << e.what() << std::endl;
+            std::cout << "Succesfully caught out_of_range exception" << std::endl;
+        }
+        
+        try
+        {
+            std::cout << "Value at the position of  98 in list3: " << list3.at(98) << std::endl;
+        }
+        catch(std::out_of_range& e)
+        {
+            std::cout << e.what() << std::endl;
+            std::cout << "Succesfully caught out_of_range exception" << std::endl;
+        }
 
         // Edit Demo
         std::cout << "\nEdit Demo" << std::endl;
@@ -113,7 +139,7 @@ int main()
         list3 += 2;
         std::cout << "list3: " << list3.toString() << std::endl;
 
-        // Comparison Tests
+        // Comparison Demo
         std::cout << "\nComparison Demo" << std::endl;
         Datastructures::UnrolledLinkedList list4;
         list4 += 4;
@@ -145,6 +171,27 @@ int main()
         std::cout << "list1 <= list2: " << (list1 <= list2) << std::endl;
         std::cout << "list1 == list2: " << (list1 == list2) << std::endl;
         std::cout << "list1 != list2: " << (list1 != list2) << std::endl;
+        !list1;
+
+        // Get Size Demo
+        std::cout << "\nGet Size Demo" << std::endl;
+        std::cout << "list1: " << list1.toString() << std::endl;
+        std::cout << "Size of list1: " << list1.getSize() << std::endl;
+
+        list1 += 1;
+        std::cout << "list1: " << list1.toString() << std::endl;
+        std::cout << "Size of list1: " << list1.getSize() << std::endl;
+        
+        list1 += 2;
+        std::cout << "list1: " << list1.toString() << std::endl;
+        std::cout << "Size of list1: " << list1.getSize() << std::endl;
+
+        list1 += 3;
+        list1 += 4;
+        list1 += 5;
+        list1 += 6;
+        std::cout << "list1: " << list1.toString() << std::endl;
+        std::cout << "Size of list1: " << list1.getSize() << std::endl;
     }
     catch(...)
     {
